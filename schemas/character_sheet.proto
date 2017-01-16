@@ -4,14 +4,14 @@ package scs;
 
 // Wrapper for an entire character sheet
 message Sheet {
-  required string id = 1;
-  required string player = 2;
+  string id = 1;
+  string player = 2;
   repeated Section sections = 3;
 }
 
 // Section of fields for the sheet
 message Section {
-  optional string name = 1;
+  string name = 1;
   repeated Field fields = 2;
   repeated Section subsections = 3;
 }
@@ -20,7 +20,7 @@ message Section {
 message Field {
   message Options {
     repeated string list = 1;
-    optional int32 selected = 2;
+    int32 selected = 2;
   }
   enum Type {
     STRING = 0;
@@ -28,17 +28,17 @@ message Field {
     BOOLEAN = 2;
     OPTION = 3;
   }
-  required string name = 1;
-  optional string val_str = 2;
-  optional int32 val_num = 3;
-  optional bool val_bool = 4;
-  optional Options val_options = 5;
-  required Type type = 6;
+  string name = 1;
+  string val_str = 2;
+  int32 val_num = 3;
+  bool val_bool = 4;
+  Options val_options = 5;
+  Type type = 6;
   
   // Min and max values for numbers, but length for strings
-  required int32 min_val = 7; 
-  required int32 max_val = 8;
+  int32 min_val = 7; 
+  int32 max_val = 8;
   
   // Whether or not the user has control over this field
-  required bool is_static = 9;
+  bool is_static = 9;
 }
